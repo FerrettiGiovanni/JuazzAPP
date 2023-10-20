@@ -17,55 +17,13 @@ public class JuazzAPP {
             Thread.sleep(5000);
         }
 
-        // creo un robot
-        Robot robot = new Robot();
-        
-        // Cliccare su un punto specifico dello schermo
-        int x = 200; // Coordinata x del punto
-        int y = 185; // Coordinata y del punto
-        robot.mouseMove(x, y); // Sposta il mouse al punto desiderato
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK); // Clicca il pulsante sinistro del mouse
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); // Rilascia il pulsante sinistro del mouse
-
-        // Aspettare che la finestra di chat sia completamente caricata
-        Thread.sleep(5000);
-        
-        String name = "Nome Contatto";
-        robot.setAutoDelay(40);
-        typeString(robot, name);
-        
-        // Cliccare sul contatto desiderato
-        robot.delay(1000); 
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-
-        // Aspettare che la finestra di chat sia completamente caricata
-        Thread.sleep(5000);
-
-        // Scrivere il messaggio nella chat
-        String message = "PROVA INVIO";
-        robot.setAutoDelay(40);
-        typeString(robot, message);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        // Creazione di un oggetto per gestire l'automazione
+        AutomationHandler automationHandler = new AutomationHandler();
+        automationHandler.performWhatsAppAutomation();
 
         // Chiudere il browser 
         if (p != null) {
             p.destroy();
-        }
-    }
-
-    private static void typeString(Robot robot, String text) {
-        for (char c : text.toCharArray()) {
-            int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-            if (Character.isUpperCase(c)) {
-                robot.keyPress(KeyEvent.VK_SHIFT);
-            }
-            robot.keyPress(keyCode);
-            robot.keyRelease(keyCode);
-            if (Character.isUpperCase(c)) {
-                robot.keyRelease(KeyEvent.VK_SHIFT);
-            }
         }
     }
 
