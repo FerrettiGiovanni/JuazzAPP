@@ -3,33 +3,47 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class AutomationHandler {
+    private Robot robot;
 
-    public void performWhatsAppAutomation() throws Exception {
-        // Creazione di un oggetto Robot per l'automazione
-        Robot robot = new Robot();
-
-        // Automazione dei passaggi di WhatsApp
-        clickOnScreen(robot, 200, 185);
-        Thread.sleep(5000);
-
-        String contactName = "Nome Contatto";
-        typeString(robot, contactName);
-        pressEnter(robot);
-
-        Thread.sleep(5000);
-
-        String message = "PROVA INVIO";
-        typeString(robot, message);
-        pressEnter(robot);
+    public AutomationHandler() {
+        try {
+            robot = new Robot();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void clickOnScreen(Robot robot, int x, int y) {
+    public void performWhatsAppAutomation() {
+        openWhatsAppWeb();
+        clickAtLocation(200, 185);
+        waitForChatToLoad(2000);
+        typeString("Giuseppe Leotta");
+        pressEnter();
+        waitForChatToLoad(5000);
+        typeString("Messaggione simpatico ");
+        pressEnter();
+        
+    }
+
+    private void openWhatsAppWeb() {
+        // Codice per aprire WhatsApp Web
+    }
+
+    private void clickAtLocation(int x, int y) {
         robot.mouseMove(x, y);
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
 
-    private void typeString(Robot robot, String text) {
+    private void waitForChatToLoad(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void typeString(String text) {
         for (char c : text.toCharArray()) {
             int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
             if (Character.isUpperCase(c)) {
@@ -43,7 +57,7 @@ public class AutomationHandler {
         }
     }
 
-    private void pressEnter(Robot robot) {
+    private void pressEnter() {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
