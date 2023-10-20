@@ -17,10 +17,10 @@ public class AutomationHandler {
         openWhatsAppWeb();
         clickAtLocation(200, 185);
         waitForChatToLoad(2000);
-        typeString("Giuseppe Leotta");
+        typeString("Nome Contatto");
         pressEnter();
         waitForChatToLoad(5000);
-        typeString("Messaggione simpatico ");
+        typeString("Messaggione");
         pressEnter();
         
     }
