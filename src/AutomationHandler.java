@@ -28,6 +28,7 @@ public class AutomationHandler {
 
     private void openWhatsAppWeb() {
         // Codice per aprire WhatsApp Web
+    	// ancora non implementato
     }
 
     private void clickAtLocation(int x, int y) {
