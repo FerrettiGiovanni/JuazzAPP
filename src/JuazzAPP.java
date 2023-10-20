@@ -17,7 +17,7 @@ public class JuazzAPP {
             Thread.sleep(5000);
         }
 
-        // Il resto del tuo codice per l'automazione
+        // creo un robot
         Robot robot = new Robot();
         
         // Cliccare su un punto specifico dello schermo
