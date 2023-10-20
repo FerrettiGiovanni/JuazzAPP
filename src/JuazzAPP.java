@@ -1,9 +1,3 @@
-import java.awt.Robot;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.util.Scanner;
-
 public class JuazzAPP {
 
     public static void main(String[] args) throws Exception {

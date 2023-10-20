@@ -1,6 +1,7 @@
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 public class AutomationHandler {
     private Robot robot;
@@ -20,7 +21,7 @@ public class AutomationHandler {
         typeString("Nome Contatto");
         pressEnter();
         waitForChatToLoad(5000);
-        typeString("Messaggione");
+        typeString("Inserire il messaggio");
         pressEnter();
         
     }
@@ -44,6 +45,8 @@ public class AutomationHandler {
     }
 
     private void typeString(String text) {
+        Random random = new Random();
+
         for (char c : text.toCharArray()) {
             int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
             if (Character.isUpperCase(c)) {
@@ -53,6 +56,14 @@ public class AutomationHandler {
             robot.keyRelease(keyCode);
             if (Character.isUpperCase(c)) {
                 robot.keyRelease(KeyEvent.VK_SHIFT);
+            }
+
+            // Aggiunge una pausa casuale tra 3ms e 30ms
+            int randomDelay = random.nextInt(28) + 3; // Genera un numero casuale tra 3 e 30
+            try {
+                Thread.sleep(randomDelay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
