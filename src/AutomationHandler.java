@@ -61,11 +61,7 @@ public class AutomationHandler {
 
             // Aggiunge una pausa casuale tra 3ms e 30ms
             int randomDelay = random.nextInt(28) + 3; // Genera un numero casuale tra 3 e 30
-            try {
-                Thread.sleep(randomDelay);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            waitForChatToLoad(randomDelay);
         }
     }
 
